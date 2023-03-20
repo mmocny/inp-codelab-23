@@ -1,7 +1,7 @@
 'use client';
 
-import measureInteractions from "../common/measureInteractions.js"
-import measureLoAF from "../common/measureLoAF.js";
+import measureInteractions from "../common/inp.js"
+import measureLoAF from "../common/LoAF.js";
 
 import { useEffect } from "react";
 

@@ -27,14 +27,11 @@ import dynamic from "next/dynamic";
 	};
 
 	return (
-		<main>
+		<main className={isPending ? "blurred" : ""}>
 			<SearchBar searchTerm={searchTerm} onInput={onInput}></SearchBar>
-
-			<div className={isPending ? "blur-sm" : ""}>
-				<Suspense>
-					<AutoCompleteSync searchTerm={autoCompleteTerm} sailData={sailData!}></AutoCompleteSync>
-				</Suspense>
-			</div>
+			<Suspense>
+				<AutoCompleteSync searchTerm={autoCompleteTerm} sailData={sailData!}></AutoCompleteSync>
+			</Suspense>
 		</main>
 	);
 }

@@ -1,3 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* html {
+	box-sizing: border-box;
+	font-size: 16px;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+} */
+
 :root {
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 	line-height: 1.5;
@@ -36,35 +64,37 @@ body {
 }
 
 main {
-	height: 100vh;
+	min-height: 100vh;
 	width: max(400px, 60vw);
 	max-width: 100%;
 	margin: 0 auto;
+	padding: 10vw 0 5vw 0;
 
 	display: grid;
-	grid-template-rows: min-content 1fr;
-	gap: 10px;
+	grid-template-rows: min-content repeat(10, min-content);
+	gap: 1em;
 }
 
 @media only screen and (max-height: 900px) {
 	main {
-		/* background-color: lightblue; */
-		margin-top: 10vw;
+		padding-top: 5vw;
 	}
 }
 
 
-
 .searchbox {
 	width: 100%;
+	padding: 1em;
 }
 
 .result {
-
-}
-
-.result.summary {
+	justify-self: stretch;
 }
 
 .result.item {
+	justify-self: stretch;
+}
+
+.blurred .result {
+	filter: blur(4px);
 }

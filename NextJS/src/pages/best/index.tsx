@@ -26,14 +26,11 @@ function ReactSearchBest() {
 	};
 
 	return (
-		<main>
+		<main className={isPending ? "blurred" : ""}>
 			<SearchBar searchTerm={searchTerm} onInput={onInput}></SearchBar>
-
-			<div className={isPending ? "blur-sm" : ""}>
-				<Suspense>
-					<AutoCompleteAsync searchTerm={autocompleteTerm} sailData={sailData!} abortSignal={abortSignal}></AutoCompleteAsync>
-				</Suspense>
-			</div>
+			<Suspense>
+				<AutoCompleteAsync searchTerm={autocompleteTerm} sailData={sailData!} abortSignal={abortSignal}></AutoCompleteAsync>
+			</Suspense>
 		</main>
 	);
 }

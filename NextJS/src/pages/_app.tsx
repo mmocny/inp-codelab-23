@@ -5,6 +5,7 @@ import { ReactElement, ReactNode, Suspense } from 'react'
 
 import '@/common/styles.css';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
 	getLayout?: (page: ReactElement) => ReactNode
@@ -15,11 +16,13 @@ type AppPropsWithLayout = AppProps & {
 }
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
+	const router = useRouter();
+	const path = router.pathname.substring(1);
 	return (
 		<>
 			<Head>
 				<link rel="icon" href="data:," />
-				<title>Sailooogle</title>
+				<title>{`Sailoogle - ${path}`}</title>
 				<meta
 					name="description"
 					content=""
