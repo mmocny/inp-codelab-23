@@ -1,6 +1,6 @@
 import { createEffect, onCleanup } from "solid-js";
-import measureInteractions from "~/common/measureInteractions";
-import measureLoAF from "~/common/measureLoAF";
+import measureInteractions from "~/common/inp";
+import measureLoAF from "~/common/LoAF";
 
 export default function WebVitalsMonitor() {
 	createEffect(() => {

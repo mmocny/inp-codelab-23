@@ -16,8 +16,10 @@ export default function SolidSearchBad() {
 
 	return (
 		<Show when={!sailData.loading}>
-			<SearchBar searchTerm={searchTerm} onInput={onInput}></SearchBar>
-			<AutoCompleteSync searchTerm={searchTerm} sailData={sailData()!}></AutoCompleteSync>
+			<main>
+				<SearchBar searchTerm={searchTerm} onInput={onInput}></SearchBar>
+				<AutoCompleteSync searchTerm={searchTerm} sailData={sailData()!}></AutoCompleteSync>
+			</main>
 		</Show>
 	);
 }

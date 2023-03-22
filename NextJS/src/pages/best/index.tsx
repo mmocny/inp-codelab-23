@@ -5,13 +5,10 @@ import getSailData from "@/common/getSailData";
 import useAbortSignallingTransition from "@/hooks/useAbortSignallingTransition";
 import SearchBar from "@/common/components/SearchBar";
 import AutoCompleteAsync from "@/components/AutoCompleteAsync";
-import dynamic from "next/dynamic";
 
 function ReactSearchBest() {
 	const sailData = use(useMemo(() => getSailData(), []));
-
 	const [isPending, startAbortSignallingTransition, abortSignal] = useAbortSignallingTransition();
-
 	const [searchTerm, setSearchTerm] = useState("");
 	const [autocompleteTerm, setAutocompleteTerm] = useState(searchTerm);
 
@@ -32,8 +29,10 @@ function ReactSearchBest() {
 				<AutoCompleteAsync searchTerm={autocompleteTerm} sailData={sailData!} abortSignal={abortSignal}></AutoCompleteAsync>
 			</Suspense>
 		</main>
+		
 	);
 }
 
+import dynamic from "next/dynamic";
 const Page = dynamic(async () => ReactSearchBest, { ssr: false });
 export default Page;

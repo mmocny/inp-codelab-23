@@ -5,14 +5,11 @@ import getSailData from "@/common/getSailData";
 import useDebouncedEffect from "@/hooks/useDebouncedEffect";
 import SearchBar from "@/common/components/SearchBar";
 import AutoCompleteSync from "@/components/AutoCompleteSync";
-import dynamic from "next/dynamic";
 
  function ReactSearchBetter() {
 	const sailData = use(useMemo(() => getSailData(), []));
 	const [searchTerm, setSearchTerm] = useState("");
 	const [autoCompleteTerm, setAutoCompleteTerm] = useState(searchTerm);
-
-	// Because we debounce the effect, we don't use the transition isPending
 	const isPending = searchTerm != autoCompleteTerm;
 
 	useDebouncedEffect(() => {
@@ -36,5 +33,6 @@ import dynamic from "next/dynamic";
 	);
 }
 
+import dynamic from "next/dynamic";
 const Page = dynamic(async () => ReactSearchBetter, { ssr: false });
 export default Page;

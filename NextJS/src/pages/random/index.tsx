@@ -3,7 +3,7 @@ import { ChangeEvent, use, useMemo, useState } from "react";
 
 import getSailData from "@/common/getSailData";
 import SearchBar from "@/common/components/SearchBar";
-import AutoCompleteRandom from "@/components/AutoCompleteRandom";
+import AutoCompleteRandom from "@/components/AutoCompleteBroken";
 import dynamic from "next/dynamic";
 
 function ReactSearchRandom() {

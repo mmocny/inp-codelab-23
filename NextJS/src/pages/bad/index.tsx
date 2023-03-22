@@ -4,7 +4,6 @@ import { ChangeEvent, use, useMemo, useState } from "react";
 import getSailData from "@/common/getSailData";
 import SearchBar from "@/common/components/SearchBar";
 import AutoCompleteSync from "@/components/AutoCompleteSync";
-import dynamic from "next/dynamic";
 
 function ReactSearchBad() {
 	const sailData = use(useMemo(() => getSailData(), []));
@@ -23,5 +22,6 @@ function ReactSearchBad() {
 	);
 }
 
+import dynamic from "next/dynamic";
 const Page = dynamic(async () => ReactSearchBad, { ssr: false });
 export default Page;

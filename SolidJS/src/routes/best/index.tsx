@@ -6,6 +6,7 @@ import useAbortSignallingTransition from '~/hooks/useAbortSignallingTransition';
 import SearchBar from '~/components/SearchBar';
 import AutoCompleteAsync from '~/components/AutoCompleteAsync';
 
+
 export default function SolidSearchBest() {
 	const [sailData] = createResource(getSailData);
 
@@ -26,13 +27,12 @@ export default function SolidSearchBest() {
 
 	return (
 		<Show when={!sailData.loading}>
-			<SearchBar searchTerm={searchTerm} onInput={onInput}></SearchBar>
-
-			<div class={isPending() ? "blur-sm" : ""}>
+			<main class={isPending() ? "blur-sm" : ""}>
+				<SearchBar searchTerm={searchTerm} onInput={onInput}></SearchBar>
 				<Suspense>
 					<AutoCompleteAsync searchTerm={autocompleteTerm} sailData={sailData()!} abortSignal={abortSignal}></AutoCompleteAsync>
 				</Suspense>
-			</div>
+			</main>
 		</Show>
 	);
 }

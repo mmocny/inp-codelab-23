@@ -8,6 +8,8 @@ import filterResultsAsync from "~/common/filterResultsAsync";
 import SailboatResults from "~/common/components/SailboatResults";
 import SailboatPreview from "~/common/components/SailboatPreview";
 
+
+
 export default function AutoCompleteAsync({ searchTerm, sailData, abortSignal }: { searchTerm: Accessor<string>, sailData: SailData, abortSignal: Accessor<AbortSignal> }) {
 	const [searchers] = createResource(() => createSearchTasks(Fuse, sailData));
 	const [results] =  createResource(() => [searchTerm(), abortSignal()], ([searchTerm, abortSignal]) => filterResultsAsync(searchers()!, searchTerm as string, abortSignal as AbortSignal));
