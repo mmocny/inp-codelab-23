@@ -8,7 +8,7 @@ module.exports = function(phase, { defaultConfig }) {
       externalDir: true,
     },
     output: 'export',
-    // reactStrictMode: false,
+    reactStrictMode: false,
   };
 
   if (phase === PHASE_PRODUCTION_BUILD) {

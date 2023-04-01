@@ -15,11 +15,9 @@ function ReactSearchBest() {
 	const onInput = async (e: ChangeEvent<HTMLInputElement>) => {
 		const searchTerm = e.target.value;
 		setSearchTerm(searchTerm);
-		try {
-			await startAbortSignallingTransition(() => {
-				setAutocompleteTerm(searchTerm);
-			});
-		} catch { }
+		await startAbortSignallingTransition(() => {
+			setAutocompleteTerm(searchTerm);
+		});
 	};
 
 	return (
@@ -29,7 +27,6 @@ function ReactSearchBest() {
 				<AutoCompleteAsync searchTerm={autocompleteTerm} sailData={sailData!} abortSignal={abortSignal}></AutoCompleteAsync>
 			</Suspense>
 		</main>
-		
 	);
 }
 

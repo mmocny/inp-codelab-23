@@ -9,19 +9,17 @@ export default async function filterResultsAsync(searchers: SearchTask[], search
 
 	const start = performance.now();
 
-	try {
-		for (let searcher of searchers) {
-			await yieldToMain();
-			signal?.throwIfAborted();
-
-			const results = searcher(searchTerm);
-			ret.push(...results);
+	for (let searcher of searchers) {
+		await yieldToMain();
+		if (signal?.aborted) {
+			performance.measure('Aborted: filterResults for: ' + searchTerm, { start });
+			return [];
 		}
-		
-		performance.measure('Computed: filterResults for: ' + searchTerm, { start });
-		return ret.sort((a,b) => a!.score! - b!.score!);
-	} catch {
-		performance.measure('Aborted: filterResults for: ' + searchTerm, { start });
-		return [];
+
+		const results = searcher(searchTerm);
+		ret.push(...results);
 	}
+	
+	performance.measure('Computed: filterResults for: ' + searchTerm, { start });
+	return ret.sort((a,b) => a!.score! - b!.score!);
 }

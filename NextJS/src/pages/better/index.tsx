@@ -1,12 +1,13 @@
 'use client';
-import { ChangeEvent, Suspense, startTransition, use, useMemo, useState } from "react";
+import { ChangeEvent, Suspense, startTransition, use, useCallback, useMemo, useState } from "react";
 
 import getSailData from "@/common/getSailData";
-import useDebouncedEffect from "@/hooks/useDebouncedEffect";
 import SearchBar from "@/common/components/SearchBar";
 import AutoCompleteSync from "@/components/AutoCompleteSync";
+import useDebouncedEffect from "@/hooks/useDebouncedEffect";
 
- function ReactSearchBetter() {
+
+function ReactSearchBetter() {
 	const sailData = use(useMemo(() => getSailData(), []));
 	const [searchTerm, setSearchTerm] = useState("");
 	const [autoCompleteTerm, setAutoCompleteTerm] = useState(searchTerm);
@@ -16,7 +17,7 @@ import AutoCompleteSync from "@/components/AutoCompleteSync";
 		startTransition(() => {
 			setAutoCompleteTerm(searchTerm);
 		});
-	}, [searchTerm, setAutoCompleteTerm], 1000);
+	}, 1000, [searchTerm]);
 
 	const onInput = (e: ChangeEvent<HTMLInputElement>) => {
 		const searchTerm = e.target.value;

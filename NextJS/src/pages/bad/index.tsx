@@ -16,8 +16,8 @@ function ReactSearchBad() {
 
 	return (
 		<main>
-			<SearchBar searchTerm={searchTerm} onInput={onInput}></SearchBar>
-			<AutoCompleteSync searchTerm={searchTerm} sailData={sailData!}></AutoCompleteSync>
+			<SearchBar searchTerm={searchTerm} onInput={onInput} />
+			<AutoCompleteSync searchTerm={searchTerm} sailData={sailData!} />
 		</main>
 	);
 }

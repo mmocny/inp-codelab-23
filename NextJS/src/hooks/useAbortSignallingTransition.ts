@@ -13,9 +13,11 @@ export default function useAbortSignallingTransition() : [boolean, TransitionSta
 				callback();
 				setAbortController(newAbortController);
 			});
+			// Cleanup here
 		} catch(ex) {
+			// Abort here
 			newAbortController.abort();
-			throw ex;
+			// throw ex;
 		}
 	}, [startAwaitableTransition, setAbortController]);
 

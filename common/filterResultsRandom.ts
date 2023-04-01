@@ -5,14 +5,7 @@ function pickAtRandom<T>(data: T[]): T {
 }
 
 export default function filterResultsRandom(data: SailBoat[], searchTerm: string) {
-	const sameLetter = data.filter(item => {
-		const name = item.name;
-		if (name[0].toLocaleLowerCase() != searchTerm[0]?.toLocaleLowerCase())
-			return false;
-		return true;
-	});
-
-	const targetCount = Math.floor(sameLetter.length / searchTerm.length);
-	const someRandomPicks = Array.from({ length: targetCount }, () => pickAtRandom(sameLetter));
+	if (searchTerm === "") return [];
+	const someRandomPicks = Array.from({ length: 10 }, () => pickAtRandom(data));
 	return someRandomPicks.map(item => ({ item, score: 0 }));
 }
