@@ -18,16 +18,14 @@ export default function SolidSearchBest() {
 	const onInput = async (e: any) => {
 		const searchTerm = e.target.value;
 		setSearchTerm(searchTerm);
-		try {
-			await startAbortSignallingTransition(() => {
-				setAutocompleteTerm(searchTerm);
-			});
-		} catch { }
+		await startAbortSignallingTransition(() => {
+			setAutocompleteTerm(searchTerm);
+		});
 	};
 
 	return (
 		<Show when={!sailData.loading}>
-			<main class={isPending() ? "blur-sm" : ""}>
+			<main class={isPending() ? "blurred" : ""}>
 				<SearchBar searchTerm={searchTerm} onInput={onInput}></SearchBar>
 				<Suspense>
 					<AutoCompleteAsync searchTerm={autocompleteTerm} sailData={sailData()!} abortSignal={abortSignal}></AutoCompleteAsync>
