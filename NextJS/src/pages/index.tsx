@@ -6,10 +6,10 @@ export default function IndexPage() {
   return (
 	<main>
 		<ul>
-			<li><A href="./random">Starter: search doesnt work right...</A></li>
-			<li><A href="./bad">Bad: Synchronous and unresponsive.</A></li>
-			<li><A href="./better">Better: Transition, Delayed+Debounced.</A></li>
-			<li><A href="./best">Best: Asynchronous, yieldy, and abortable.</A></li>
+			<li><A href="./0_random">Starter: search doesnt work right...</A></li>
+			<li><A href="./1_bad">Bad: Synchronous and unresponsive.</A></li>
+			<li><A href="./2_better">Better: Transition, Delayed+Debounced.</A></li>
+			<li><A href="./3_best">Best: Asynchronous, yieldy, and abortable.</A></li>
 		</ul>
 	</main>
   )
