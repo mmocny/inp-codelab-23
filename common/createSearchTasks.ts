@@ -28,7 +28,7 @@ function createSearchTask(Fuse: any, boats: SailBoat[], keys: string[]): SearchT
 	});
 	return function filterResults(searchTerm: string): SearchResult[] {
 		// Add some busy work here.
-		const target = performance.now() + 5;
+		const target = performance.now() + 10;
 		while (performance.now() < target);
 		return fuse.search(searchTerm);
 	};
